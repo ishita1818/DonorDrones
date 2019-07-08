@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "130022900727",
+    "firebase_url": "https://donardrones.firebaseio.com",
+    "project_id": "donardrones",
+    "storage_bucket": "donardrones.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130022900727:android:02412e771b73e19d",
+        "android_client_info": {
+          "package_name": "com.example.donardrones"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130022900727-b6qv9nclnios9sqhun7tc2ttp274vlhf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO1AO2jMDNAn182hZ-Sqnkj2UZdcFDjrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130022900727-b6qv9nclnios9sqhun7tc2ttp274vlhf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
