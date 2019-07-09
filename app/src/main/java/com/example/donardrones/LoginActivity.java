@@ -6,16 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
     private static final int RC_SIGN_IN = 100;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login_activtiy);
         // Configure sign-in to request the user's ID, email address, and basic
 // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -31,16 +33,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .build();
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        findViewById(R.id.sign_in_button).setOnClickListener(this);
+        SignInButton acceptor_button = findViewById(R.id.sign_in_button_acceptor);
+        SignInButton donor_button = findViewById(R.id.sign_in_button_donor);
+        SignInButton med_button = findViewById(R.id.sign_in_button_med);
+        acceptor_button.setOnClickListener(this);
+        donor_button.setOnClickListener(this);
+        med_button.setOnClickListener(this);
+        setGoogleButtonText(acceptor_button,"Acceptor Sign In");
+        setGoogleButtonText(donor_button,"Donor Sign In");
+        setGoogleButtonText(med_button,"MedAssist Sign In");
+
+    }
+    protected void setGoogleButtonText(SignInButton signInButton, String buttonText) {
+        // Find the TextView that is inside of the SignInButton and set its text
+        for (int i = 0; i < signInButton.getChildCount(); i++) {
+            View v = signInButton.getChildAt(i);
+
+            if (v instanceof TextView) {
+                TextView tv = (TextView) v;
+                tv.setText(buttonText);
+                return;
+            }
+        }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.sign_in_button:
+            case R.id.sign_in_button_acceptor:
                 signIn();
+                Toast.makeText(this, "Signed in as Acceptor", Toast.LENGTH_SHORT).show();
                 break;
-
+            case R.id.sign_in_button_donor:
+                signIn();
+                Toast.makeText(this, "Signed in as Donor", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.sign_in_button_med:
+                signIn();
+                Toast.makeText(this, "Signed in as MedAssist", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
@@ -87,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void updateUI(GoogleSignInAccount account) {
         if(account!=null)
-        Toast.makeText(this, account.getEmail(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, account.getEmail(), Toast.LENGTH_SHORT).show();
     }
+
 }
