@@ -10,107 +10,109 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
-        >
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Request blood"
-            android:textStyle="bold"
             android:layout_marginBottom="40dp"
+            android:text="Request blood"
             android:textAllCaps="true"
             android:textAppearance="@android:style/TextAppearance.Large"
             android:textColor="@color/colorPrimary"
-            />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp">
+            android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="150dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Blood Group"
-            android:textAppearance="@android:style/TextAppearance.Medium"
-            android:textColor="@color/colorPrimary"
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="E.g B+"
-            android:id="@+id/acc_blood_gp_input"
-            android:layout_weight="1"
-            android:backgroundTint="@color/colorPrimary"
-            android:textCursorDrawable="@null"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="20dp">
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="@android:style/TextAppearance.Medium"
-            android:text="Units"
-            android:textColor="@color/colorPrimary"
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="1,2,..."
-            android:inputType="number"
-            android:backgroundTint="@color/colorPrimary"
-            android:layout_weight="1"
-            android:id="@+id/acc_units_input"
-            android:textCursorDrawable="@null"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Blood Group"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:textColor="@color/colorPrimary" />
 
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="@android:style/TextAppearance.Medium"
-            android:text="Your Location"
-            android:textColor="@color/colorPrimary"
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:backgroundTint="@color/colorPrimary"
-            android:layout_height="wrap_content"
-            android:hint="Currrent Location"
-            android:layout_weight="1"
-            android:id="@+id/acc_location_input"
-            android:textCursorDrawable="@null"
-            />
+            <EditText
+                android:id="@+id/acc_blood_gp_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:hint="E.g B+"
+                android:textCursorDrawable="@null" />
+        </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Units"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:textColor="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/acc_units_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:hint="1,2,..."
+                android:inputType="number"
+                android:textCursorDrawable="@null" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Your Location"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:textColor="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/acc_location_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:hint="Currrent Location"
+                android:inputType="textPostalAddress"
+                android:textCursorDrawable="@null" />
+
+        </LinearLayout>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
-            android:text="request"
-            android:textAppearance="@android:style/TextAppearance.Medium"
-            android:textAllCaps="true"
+            android:background="@color/colorPrimary"
             android:padding="10dp"
+            android:text="request"
+            android:textAllCaps="true"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:textColor="@color/colorAccent"
-            android:background="@color/colorPrimary"/>
+            android:id="@+id/acc_submit_button"/>
 
     </LinearLayout>
 </LinearLayout>

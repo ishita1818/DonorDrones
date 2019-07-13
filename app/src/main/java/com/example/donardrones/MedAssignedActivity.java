@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DonarMainActivity extends AppCompatActivity {
+public class MedAssignedActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donar_main);
+        setContentView(R.layout.activity_med_assigned);
     }
 }

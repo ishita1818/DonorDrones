@@ -22,11 +22,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.example.donardrones.Util;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -191,7 +187,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     startActivity(i);
                     break;
                 case 1 :
-                    i=new Intent(LoginActivity.this, DonarMainActivity.class);
+                    i=new Intent(LoginActivity.this, DonorMainActivity.class);
                     startActivity(i);
                     break;
                 case 2:
