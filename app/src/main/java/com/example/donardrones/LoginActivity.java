@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private GoogleSignInClient mGoogleSignInClient;
     private static int type=-1;
     // Access a Cloud Firestore instance from your Activity
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,18 +124,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
             else {
                 final User user = new User(name_input.getText().toString(),account.getEmail(),phone_input.getText().toString(),type);
-                //Map<String,User> m = new HashMap<>();
-                //m.put(account.getEmail(),user);
-                db.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
+                db.collection("users").document(account.getEmail()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
+                    public void onSuccess(Void aVoid) {
                         Log.v(TAG,"Added into users!");
                     }
                 });
-                db.collection(Util.getUserType(type)).add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
+                db.collection(Util.getUserType(type)).document(account.getEmail()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(LoginActivity.this,"Added with id :"+ documentReference.getId(),Toast.LENGTH_SHORT).show();
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(LoginActivity.this,"Added with id :"+account.getEmail(),Toast.LENGTH_SHORT).show();
                         Util.setCurrentUser(user);
                         updateUI(account);
                     }
@@ -143,6 +143,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(LoginActivity.this,"Error",Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
@@ -168,14 +169,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             db.collection("users").whereEqualTo("email",account.getEmail()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    User u = new User(queryDocumentSnapshots.getDocuments().get(0).getData());
-                    type = u.getType();
-                    Util.setCurrentUser(u);
-                    updateUI(account);
+                    if(!queryDocumentSnapshots.isEmpty()) {
+                        User u = new User(queryDocumentSnapshots.getDocuments().get(0).getData());
+                        type = u.getType();
+                        Util.setCurrentUser(u);
+                        updateUI(account);
+                    }
                 }
             });
         }else
-            Toast.makeText(LoginActivity.this,"Error",Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this,"No last signed account found!",Toast.LENGTH_SHORT).show();
     }
 
     private void updateUI(GoogleSignInAccount account) {
@@ -183,8 +186,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Intent i;
             switch (type){
                 case 0:
-                    i=new Intent(LoginActivity.this, AccMainActivity.class);
-                    startActivity(i);
+                    db.collection("blood_request").whereEqualTo("acceptor",Util.getCurrentUser()).whereEqualTo("active","yes").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            if (!queryDocumentSnapshots.getDocuments().isEmpty()) {
+                                Intent intent = new Intent(LoginActivity.this, AccReqAcceptedActivity.class);
+                                startActivity(intent);
+                            }else{
+                                Intent i=new Intent(LoginActivity.this, AccMainActivity.class);
+                                startActivity(i);
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                                Intent i=new Intent(LoginActivity.this, AccMainActivity.class);
+                                startActivity(i);
+                        }
+                    });
+
                     break;
                 case 1 :
                     i=new Intent(LoginActivity.this, DonorMainActivity.class);

@@ -14,6 +14,14 @@ public class User {
         this.phone = phone;
         this.type=type;
     }
+
+    public User() {
+        user_name="";
+        email="";
+        phone="";
+        type=-1;
+    }
+
     public User(Map<String,Object> m){
         user_name = m.get("user_name").toString();
         email = m.get("email").toString();

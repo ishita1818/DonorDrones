@@ -42,6 +42,7 @@ android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/med_acc_blood_gp"
             android:text="AB-"
             android:textColor="@color/colorAccent"
             android:textAppearance="?android:textAppearanceMedium"/>
@@ -62,6 +63,7 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:textColor="@color/colorAccent"
             android:text="Building #6, HiTech City, Hyderabad"
+            android:id="@+id/med_acc_location"
             android:textAppearance="?android:textAppearanceMedium"/>
     </LinearLayout>
 </LinearLayout>
@@ -77,6 +79,7 @@ android:orientation="vertical">
     <EditText
         android:layout_width="230dp"
         android:textCursorDrawable="@null"
+        android:id="@+id/med_address"
         android:backgroundTint="@color/colorPrimary"
         android:layout_height="wrap_content" />
 </LinearLayout>
@@ -90,6 +93,7 @@ android:orientation="vertical">
         android:layout_height="wrap_content"
         android:text="ACCEPT"
         android:textColor="@color/colorAccent"
+        android:id="@+id/med_accept_buton"
         android:background="#228B22"/>
     <Button
         android:layout_width="wrap_content"
@@ -97,6 +101,7 @@ android:orientation="vertical">
         android:layout_marginLeft="25dp"
         android:textColor="@color/colorAccent"
         android:text="DENY"
+        android:id="@+id/med_deny_button"
         android:background="@color/colorPrimary"
         />
 </LinearLayout>

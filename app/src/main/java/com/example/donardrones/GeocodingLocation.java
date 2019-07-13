@@ -21,33 +21,34 @@ public class GeocodingLocation {
             @Override
             public void run() {
                 Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-                String result = null;
+                Double latitude=-1.0;
+                Double longitude=-1.0;
                 try {
                     List addressList = geocoder.getFromLocationName(locationAddress, 1);
                     if (addressList != null && addressList.size() > 0) {
                         Address address = (Address)addressList.get(0);
                         StringBuilder sb = new StringBuilder();
-                        sb.append(address.getLatitude()).append("\n");
-                        sb.append(address.getLongitude()).append("\n");
-                        result = sb.toString();
+                        latitude = address.getLatitude();
+                        longitude = address.getLongitude();
                     }
                 } catch (IOException e) {
                     Log.e(TAG, "Unable to connect to Geocoder", e);
                 } finally {
                     Message message = Message.obtain();
                     message.setTarget(handler);
-                    if (result != null) {
+                    if (latitude != -1 && longitude!=-1) {
                         message.what = 1;
                         Bundle bundle = new Bundle();
-                        result = "Address: " + locationAddress +
-                                "\n\nLatitude and Longitude :\n" + result;
-                        bundle.putString("address", result);
+                        bundle.putDouble("latitude",latitude);
+                        bundle.putDouble("longitude",longitude);
+                        bundle.putString("address",locationAddress);
                         message.setData(bundle);
                     } else {
                         message.what = 1;
                         Bundle bundle = new Bundle();
-                        result = "Address: " + locationAddress +
-                                "\n Unable to get Latitude and Longitude for this address location.";
+                        String result = "Unable to get Latitude and Longitude for this address location.";
+                        bundle.putDouble("latitude",latitude);
+                        bundle.putDouble("longitude",longitude);
                         bundle.putString("address", result);
                         message.setData(bundle);
                     }

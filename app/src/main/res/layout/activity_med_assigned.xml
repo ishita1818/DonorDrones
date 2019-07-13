@@ -43,6 +43,7 @@ android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/med_donor_name"
             android:text="Ishita Sharma"
             android:textColor="@color/colorAccent"
             android:textAppearance="?android:textAppearanceMedium"/>
@@ -62,6 +63,7 @@ android:orientation="vertical">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="AB-"
+            android:id="@+id/med_donor_blood_gp"
             android:textColor="@color/colorAccent"
             android:textAppearance="?android:textAppearanceMedium"/>
     </LinearLayout>
@@ -80,6 +82,7 @@ android:orientation="vertical">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="9467161455"
+            android:id="@+id/med_donor_phone"
             android:textColor="@color/colorAccent"
             android:textAppearance="?android:textAppearanceMedium"/>
     </LinearLayout>
@@ -97,6 +100,7 @@ android:orientation="vertical">
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:id="@+id/med_donor_location"
             android:textColor="@color/colorAccent"
             android:text="Building #6, HiTech City, Hyderabad"
             android:textAppearance="?android:textAppearanceMedium"/>
@@ -115,6 +119,7 @@ android:orientation="vertical">
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textColor="@color/colorAccent"
+        android:id="@+id/med_call_donor"
         android:background="#228B22"/>
     <Button
         android:layout_width="wrap_content"
@@ -124,6 +129,7 @@ android:orientation="vertical">
         android:text="blood collected"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:id="@+id/med_blood_collected"
         android:background="@color/colorPrimary"
         />
 </LinearLayout>
