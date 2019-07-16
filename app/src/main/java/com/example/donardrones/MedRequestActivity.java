@@ -51,7 +51,7 @@ public class MedRequestActivity extends AppCompatActivity implements View.OnClic
         call_medassist = findViewById(R.id.donor_button_call_medassist);
         blood_donated = findViewById(R.id.donor_button_blood_received);
 
-        db.collection("blood_request").whereEqualTo("donor",Util.getCurrentUser()).whereEqualTo("actie","yes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("blood_request").whereEqualTo("donor",Util.getCurrentUser()).whereEqualTo("active","yes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){

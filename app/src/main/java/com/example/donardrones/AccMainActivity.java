@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,6 +32,7 @@ public class AccMainActivity extends AppCompatActivity implements View.OnClickLi
     private String address="";
     private double longitude=-1;
     private double latitude=-1;
+    private ImageButton pet;
     // Access a Cloud Firestore instance from your Activity
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
@@ -40,9 +42,10 @@ public class AccMainActivity extends AppCompatActivity implements View.OnClickLi
         edit_blood_gp = findViewById(R.id.acc_blood_gp_input);
         edit_units = findViewById(R.id.acc_units_input);
         edit_location = findViewById(R.id.acc_location_input);
+        pet = findViewById(R.id.pet_blood_request);
         submit_button = findViewById(R.id.acc_submit_button);
         submit_button.setOnClickListener(this);
-
+        pet.setOnClickListener(this);
         //Added in donor and medassist activities
         //FirebaseMessaging.getInstance().subscribeToTopic("pushNotifications");
     }
@@ -50,8 +53,10 @@ public class AccMainActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.acc_submit_button :
 
+            case R.id.pet_blood_request :
+                Toast.makeText(AccMainActivity.this,"Request for pet blood raised!",Toast.LENGTH_SHORT).show();
+            case R.id.acc_submit_button :
                 String add = edit_location.getText().toString();
                 GeocodingLocation locationAddress = new GeocodingLocation();
                 locationAddress.getAddressFromLocation(add, getApplicationContext(), new GeocoderHandler());

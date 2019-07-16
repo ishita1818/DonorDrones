@@ -6,12 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
     android:orientation="vertical"
-    android:background="@android:color/holo_red_light">
+    android:gravity="center"
+    android:background="#bf1111">
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/app_icon"
+        />
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="50dp"
         android:text="DonorDrones"
         android:textAlignment="center"
         android:textSize="35dp"
